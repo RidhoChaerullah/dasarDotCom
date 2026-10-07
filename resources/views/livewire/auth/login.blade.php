@@ -18,7 +18,7 @@
                 maxlength="255"
                 required
                 class="form-input"
-                placeholder="nama@email.com"
+                placeholder="budi_gatneg@email.com"
             >
             @error('email') <p class="form-error">{{ $message }}</p> @enderror
         </div>
