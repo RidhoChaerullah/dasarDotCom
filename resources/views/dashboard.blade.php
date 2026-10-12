@@ -95,11 +95,13 @@
                                         aria-label="{{ $loop->iteration }} dari {{ $banners->count() }}"
                                         x-bind:aria-hidden="current !== {{ $loop->index }}"
                                         x-bind:inert="current !== {{ $loop->index }}">
-                                        <div class="dash-poster-stage">
+                                        <a href="{{ route('banners.image', $banner) }}" target="_blank"
+                                            rel="noopener noreferrer" class="dash-poster-stage"
+                                            aria-label="Buka poster {{ $banner->title }} di tab baru">
                                             <img class="dash-poster" src="{{ route('banners.image', $banner) }}"
                                                 alt="{{ $banner->title }}" decoding="async"
                                                 loading="{{ $loop->first ? 'eager' : 'lazy' }}">
-                                        </div>
+                                        </a>
                                         <div class="dash-poster-caption">
                                             <div>
                                                 <p class="dash-eyebrow">KEGIATAN LABORATORIUM</p>

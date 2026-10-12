@@ -1,0 +1,114 @@
+/* Welcome: two continuous screens. All overrides are scoped to this page. */
+html:has(.lab-welcome) { scroll-snap-type: y mandatory; scroll-padding-top: 0; scroll-behavior: smooth; }
+body:has(.lab-welcome) { zoom: 1; }
+body:has(.lab-welcome) > main { max-width: none; padding: 0; }
+body:has(.lab-welcome) > footer { padding-top: 24px; scroll-snap-align: end; }
+.lab-welcome { --welcome-gutter: clamp(24px, 5vw, 80px); color: var(--text); }
+.lab-welcome *, .lab-welcome *::before, .lab-welcome *::after { box-sizing: border-box; }
+.lab-welcome :is(a, button, [tabindex]):focus-visible { outline: 2px solid var(--link); outline-offset: 4px; }
+.lab-welcome :is(h1,h2,h3,p) { margin: 0; }
+.lab-welcome .welcome-intro {
+    position: relative; isolation: isolate; display: grid;
+    grid-template-columns: 58% 42%; align-items: center;
+    width: 100%; max-width: none; margin: 0; padding: 0; overflow: clip;
+    min-height: calc(100svh - 77px); scroll-snap-align: start;
+    scroll-margin-top: 77px; scroll-snap-stop: always;
+}
+.lab-welcome .welcome-copy { position: relative; z-index: 2; padding: 48px 24px 48px clamp(32px, 12vw, 240px); }
+.lab-welcome .welcome-eyebrow { color: var(--link); font-size: 10px; font-weight: 650; letter-spacing: .15em; line-height: 1.7; }
+.lab-welcome h1 { margin: 24px 0; font-size: clamp(42px, 5.4vw, 78px); line-height: 1.04; font-weight: 750; letter-spacing: -.055em; }
+.lab-welcome h1 span { color: var(--link); }
+.lab-welcome .welcome-description { max-width: 440px; font-size: 15px; line-height: 1.85; color: var(--muted); }
+.lab-welcome .welcome-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+.lab-welcome .welcome-button { display: inline-flex; align-items: center; justify-content: center; gap: 18px; min-height: 46px; padding: 12px 20px; border: 1px solid var(--line); border-radius: 999px; font-size: 13px; font-weight: 600; line-height: 1.5; text-decoration: none; transition: background 160ms, border-color 160ms; }
+.lab-welcome .welcome-button-primary { background: #006199; border-color: #006199; color: white; }
+.lab-welcome .welcome-button-primary:hover { background: #005481; }
+.lab-welcome .welcome-button-secondary { color: var(--text); background: transparent; }
+.lab-welcome .welcome-button-secondary:hover { background: var(--hover); border-color: var(--muted); }
+.lab-welcome .welcome-note { max-width: 410px; margin-top: 18px; font-size: 11px; line-height: 1.8; color: var(--muted); }
+.lab-welcome .welcome-explore { display: inline-flex; align-items: center; gap: 24px; margin-top: 38px; min-height: 44px; color: var(--link); font-size: 12px; text-decoration: none; }
+.lab-welcome .welcome-visual { position: relative; align-self: stretch; min-width: 0; overflow: hidden; }
+.lab-welcome .welcome-visual img { position: absolute; bottom: 0; right: 0; height: 110%; width: auto; max-width: none; object-fit: contain; }
+.lab-welcome .welcome-orbit { position: absolute; inset: 12% -10% 0 0; border-radius: 50% 50% 0 0; background: radial-gradient(ellipse at 60% 50%, color-mix(in srgb, var(--link) 14%, var(--page)), transparent 70%); z-index: -1; }
+.lab-welcome .welcome-events { display: grid; grid-template-rows: auto minmax(0, 1fr); height: 100svh; min-height: 700px; padding: 104px 0 32px; scroll-snap-align: start; scroll-snap-stop: always; background: var(--page); }
+.lab-welcome .welcome-events-heading { display: flex; align-items: end; justify-content: space-between; gap: 24px; width: 100%; max-width: 1440px; padding-inline: var(--welcome-gutter); margin: 0 auto 22px; }
+.lab-welcome .welcome-events-heading h2 { margin-top: 8px; font-size: clamp(26px, 3vw, 40px); letter-spacing: -.04em; font-weight: 650; line-height: 1.15; }
+.lab-welcome .welcome-events-heading p:not(.welcome-eyebrow) { margin-top: 8px; font-size: 13px; line-height: 1.6; color: var(--muted); }
+.lab-welcome .welcome-events-label { color: var(--muted); font-size: 11px; white-space: nowrap; }
+.lab-welcome .welcome-gallery { display: grid; grid-template-rows: minmax(0, 1fr) auto; min-height: 0; max-width: 1600px; width: 100%; margin-inline: auto; }
+/* Centered slides with a glimpse of adjacent posters. */
+.lab-welcome .welcome-gallery-track {
+    position: relative; min-height: 0; display: flex; gap: 20px;
+    width: 100%; padding-inline: 7%; overflow-x: auto;
+    scroll-padding-inline: 7%; scroll-snap-type: x mandatory;
+    overscroll-behavior-x: contain; scrollbar-width: none;
+}
+.lab-welcome .welcome-gallery-track::-webkit-scrollbar { display: none; }
+.lab-welcome .welcome-slide {
+    display: grid; grid-template-rows: minmax(0, 1fr) auto;
+    flex: 0 0 100%; min-width: 0; scroll-snap-align: center;
+    scroll-snap-stop: always; opacity: .55;
+    transition: opacity 280ms ease;
+}
+.lab-welcome .welcome-slide.is-active { opacity: 1; }
+.lab-welcome .welcome-gallery-track:focus-within .welcome-slide { opacity: 1; }
+.lab-welcome .welcome-poster {
+    position: relative; isolation: isolate; display: flex;
+    align-items: center; justify-content: center; min-height: 0; height: 100%;
+    padding: 16px; border-radius: 24px; overflow: hidden;
+    background: var(--card); text-decoration: none;
+}
+.lab-welcome .welcome-poster::after {
+    content: ''; position: absolute; inset: 0; z-index: -1;
+    background: linear-gradient(120deg, rgb(0 0 0 / .18), rgb(0 0 0 / .4));
+}
+.lab-welcome .welcome-poster img { display: block; }
+.lab-welcome .welcome-poster .welcome-poster-backdrop {
+    position: absolute; inset: -8%; z-index: -2;
+    width: 116%; height: 116%; max-width: none;
+    object-fit: cover; filter: blur(30px); opacity: .75; pointer-events: none;
+}
+.lab-welcome .welcome-poster .welcome-poster-image {
+    position: relative; width: 100%; height: 100%; min-height: 0;
+    object-fit: contain; filter: drop-shadow(0 12px 24px rgb(0 0 0 / .2));
+}
+.lab-welcome .welcome-slide-caption { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 16px 0; }
+.lab-welcome .welcome-slide-caption > div { min-width: 0; }
+.lab-welcome .welcome-slide-caption p { font-size: 9px; letter-spacing: .12em; color: var(--link); }
+.lab-welcome .welcome-slide-caption h3 { margin-top: 5px; font-size: 18px; font-weight: 600; line-height: 1.4; overflow-wrap: anywhere; }
+.lab-welcome .welcome-slide-caption a { flex-shrink: 0; }
+.lab-welcome .welcome-gallery-controls { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 8px 7% 0; }
+.lab-welcome .welcome-gallery-controls p { font-size: 11px; color: var(--muted); }
+.lab-welcome .welcome-gallery-controls > div { display: flex; align-items: center; gap: 18px; font-size: 12px; font-variant-numeric: tabular-nums; color: var(--muted); }
+.lab-welcome .welcome-gallery-controls button { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line); color: var(--text); background: transparent; cursor: pointer; }
+.lab-welcome .welcome-gallery-controls button:hover { background: var(--hover); }
+.lab-welcome .welcome-gallery-controls button:disabled { opacity: .3; cursor: default; }
+.lab-welcome .welcome-events-empty { padding-inline: var(--welcome-gutter); display: flex; flex-direction: column; align-items: start; justify-content: center; gap: 24px; min-height: 50svh; max-width: 1440px; margin: auto; }
+.lab-welcome .welcome-events-empty h3 { font-size: 32px; letter-spacing: -.03em; }
+.lab-welcome .welcome-events-empty p { max-width: 520px; color: var(--muted); line-height: 1.8; }
+@media (max-width: 1199px) {
+    .lab-welcome .welcome-intro { min-height: calc(100svh - 71px); scroll-margin-top: 71px; }
+}
+@media (max-width: 700px) {
+    html:has(.lab-welcome) { scroll-snap-type: y proximity; }
+    .lab-welcome .welcome-intro { grid-template-columns: 1fr; }
+    .lab-welcome .welcome-copy { padding: 40px var(--welcome-gutter) 16px; }
+    .lab-welcome h1 { font-size: clamp(40px, 10vw, 60px); }
+    .lab-welcome .welcome-explore { margin-top: 16px; }
+    .lab-welcome .welcome-visual { height: 340px; }
+    .lab-welcome .welcome-visual img { height: 110%; right: 0; }
+    .lab-welcome .welcome-events { display: block; height: auto; min-height: 100svh; padding-top: 96px; }
+    .lab-welcome .welcome-gallery { display: block; }
+    .lab-welcome .welcome-slide { display: block; }
+    .lab-welcome .welcome-events-label { display: none; }
+    .lab-welcome .welcome-poster { height: max(320px, calc(100svh - 350px)); }
+    .lab-welcome .welcome-slide-caption { align-items: start; flex-direction: column; gap: 12px; }
+    .lab-welcome .welcome-slide-caption h3 { font-size: 16px; }
+}
+@media (max-height: 600px) {
+    html:has(.lab-welcome) { scroll-snap-type: y proximity; }
+}
+@media (prefers-reduced-motion: reduce) {
+    html:has(.lab-welcome) { scroll-behavior: auto; }
+    .lab-welcome * { transition: none !important; }
+}

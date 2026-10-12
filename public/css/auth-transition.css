@@ -1,0 +1,37 @@
+/* Authentication transition only. Independent of the Tailwind build. */
+:root {
+    --auth-transition-duration: 600ms;
+    --auth-transition-ease: cubic-bezier(.22, 1, .36, 1);
+}
+
+.auth-transition {
+    position: fixed;
+    inset: 0;
+    z-index: 2147483000;
+    display: grid;
+    place-items: center;
+    width: 100vw;
+    height: 100dvh;
+    margin: 0;
+    color: var(--text, #e2e8f0);
+    background: var(--page, #0b1120);
+    transform: translateY(100%);
+    transition: transform var(--auth-transition-duration) var(--auth-transition-ease);
+}
+
+.auth-transition.is-covered { transform: translateY(0); }
+.auth-transition.is-leaving { transform: translateY(-100%); }
+.auth-transition-content { text-align: center; padding: 24px; }
+.auth-transition-brand { font-size: 30px; font-weight: 750; letter-spacing: -.045em; }
+.auth-transition-brand span { color: var(--link, #22d3ee); }
+.auth-transition-message { margin: 12px 0 0; font-size: 14px; color: var(--muted, #94a3b8); }
+.auth-transition-retry { display: inline-block; margin-top: 20px; color: var(--link, #22d3ee); font-size: 14px; }
+.auth-transition-retry[hidden] { display: none; }
+
+html.auth-transition-active { overflow: hidden; }
+html.auth-transition-arriving body { visibility: hidden; }
+html.auth-transition-arriving .auth-transition { visibility: visible; }
+
+@media (prefers-reduced-motion: reduce) {
+    .auth-transition { transition: none; }
+}

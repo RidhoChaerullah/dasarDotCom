@@ -1,0 +1,283 @@
+/* ==========================================================================
+Portal login / daftar — desktop 40:60, mobile satu kolom
+========================================================================== */
+.lab-auth {
+    position: relative;
+    isolation: isolate;
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+    align-items: stretch;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 1160px;
+    min-height: 540px;
+    height: auto;
+    margin: 8px auto 24px;
+    padding: 12px;
+    overflow: hidden;
+    border-radius: 22px;
+    background: linear-gradient(135deg, #07334e, #006199);
+    box-shadow: 0 20px 60px rgb(0 35 65 / 12%);
+}
+
+.lab-auth > .lab-auth-copy,
+.lab-auth > .lab-auth-panel {
+    position: relative;
+    inset: auto;
+    grid-row: 1;
+    box-sizing: border-box;
+    width: 100%;
+    height: auto;
+    min-width: 0;
+    padding: 28px;
+    display: flex;
+    transition: transform 600ms cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.lab-auth > .lab-auth-copy {
+    grid-column: 1;
+    align-items: center;
+    color: white;
+}
+
+.lab-auth > .lab-auth-panel {
+    grid-column: 2;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    align-items: center;
+    margin: 0;
+    overflow: visible;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: var(--auth-card);
+    box-shadow: 0 8px 30px rgb(0 35 65 / 12%);
+}
+
+.lab-auth[data-mode="register"] > .lab-auth-copy {
+    transform: translateX(150%);
+}
+.lab-auth[data-mode="register"] > .lab-auth-panel {
+    transform: translateX(-66.666667%);
+}
+.lab-auth-panel > div {
+    width: 100%;
+    min-width: 0;
+    grid-area: 1 / 1;
+    visibility: hidden;
+    pointer-events: none;
+    margin-block: 0;
+}
+
+.lab-auth[data-mode="login"] .lab-auth-login,
+.lab-auth[data-mode="register"] .lab-auth-register {
+    visibility: visible;
+    pointer-events: auto;
+}
+.lab-auth-caption {
+    margin: 0 0 18px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: rgb(255 255 255 / 80%);
+}
+.lab-auth-copy h1 {
+    margin: 0;
+    font-size: clamp(28px, 3vw, 38px);
+    font-weight: 750;
+    line-height: 1.2;
+    letter-spacing: -1px;
+}
+.lab-auth-description {
+    max-width: 310px;
+    margin-top: 20px;
+    font-size: 14px;
+    line-height: 1.8;
+    color: rgb(255 255 255 / 90%);
+}
+.lab-auth-switch {
+    margin-top: 28px;
+    padding: 11px 16px;
+    border: 1px solid rgb(255 255 255 / 45%);
+    border-radius: 10px;
+    color: white;
+    font-size: 13px;
+    font-weight: 600;
+    transition: background 150ms;
+}
+.lab-auth-switch:hover {
+    background: rgb(255 255 255 / 12%);
+}
+.lab-auth .auth-form {
+    width: 100%;
+    max-width: none;
+    margin-inline: auto;
+}
+.lab-auth .lab-auth-login .auth-form {
+    max-width: 360px;
+}
+.lab-auth .auth-form h2 {
+    margin-top: 6px;
+    font-size: 26px;
+    line-height: 1.25;
+    letter-spacing: -0.5px;
+}
+.lab-auth .auth-form > p {
+    font-size: 13px;
+    line-height: 1.6;
+}
+.lab-auth .auth-form form {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+    margin-top: 20px;
+}
+.lab-auth .auth-form form > * {
+    min-width: 0;
+    margin-block: 0;
+}
+.lab-auth .auth-form .form-label {
+    margin-bottom: 8px;
+    font-size: 13px;
+}
+.lab-auth .auth-form .form-input {
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 42px;
+    padding: 11px 13px;
+    border-radius: 10px;
+    font-size: 14px;
+}
+.lab-auth .auth-form .button-primary {
+    min-height: 42px;
+    padding: 11px 16px;
+}
+.lab-auth .auth-form > p:last-child {
+    margin-top: 22px;
+    font-size: 12px;
+}
+.lab-auth-register .auth-form > p:first-child {
+    display: none;
+}
+.lab-auth .lab-auth-register form {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px 18px;
+}
+.lab-auth .lab-auth-register form > div:first-child,
+.lab-auth .lab-auth-register form > button {
+    grid-column: 1 / -1;
+}
+
+@media (max-width: 899px) {
+    .lab-auth {
+        grid-template-columns: minmax(0, 1fr);
+        height: auto;
+        min-height: 0;
+        max-width: 580px;
+        padding: 12px;
+        margin: 8px auto 24px;
+    }
+    .lab-auth > .lab-auth-copy {
+        grid-column: 1;
+        grid-row: 1;
+        padding: 24px;
+    }
+    .lab-auth > .lab-auth-panel {
+        grid-column: 1;
+        grid-row: 2;
+        padding: 28px 24px;
+    }
+    .lab-auth[data-mode] > .lab-auth-copy,
+    .lab-auth[data-mode] > .lab-auth-panel {
+        transform: none;
+    }}
+    @media (max-width: 767px) {
+        .lab-auth {
+            border-radius: 22px;
+        }
+        .lab-auth-copy h1 {
+            font-size: 28px;
+        }
+        .lab-auth-description {
+            margin-top: 12px;
+        }
+        .lab-auth-switch {
+            margin-top: 16px;
+        }}
+        @media (max-width: 479px) {
+            .lab-auth .lab-auth-register form {
+                grid-template-columns: minmax(0, 1fr);
+            }}
+
+            /* Kedua form mengisi sel yang sama agar pergantian mode tidak mengubah tinggi. */
+            .lab-auth .auth-form .auth-form-eyebrow {
+                color: var(--link);
+                font-size: 10px;
+                font-weight: 650;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+            }
+            .lab-auth .auth-form .button-primary {
+                border-radius: 10px;
+                background: #006199;
+                color: white;
+                font-size: 13px;
+                font-weight: 600;
+            }
+            .lab-auth .auth-form .button-primary:hover {
+                background: #005481;
+            }
+            .lab-auth .form-error {
+                font-size: 11px;
+                line-height: 1.5;
+            }
+            .lab-auth :is(input, button, a):focus-visible {
+                outline: 2px solid var(--link);
+                outline-offset: 4px;
+            }
+            .lab-auth-copy button:focus-visible {
+                outline-color: white;
+            }
+            @media (max-width: 899px) {
+                .lab-auth .lab-auth-copy {
+                    padding: 20px 24px;
+                }
+                .lab-auth .lab-auth-copy h1 {
+                    font-size: 24px;
+                }
+                .lab-auth .lab-auth-copy h1 br {
+                    display: none;
+                }
+                .lab-auth .lab-auth-description {
+                    display: none;
+                }
+                .lab-auth .lab-auth-caption {
+                    margin-bottom: 10px;
+                }
+                .lab-auth .lab-auth-switch {
+                    margin-top: 14px;
+                }
+                .lab-auth .auth-form .form-input {
+                    font-size: 16px;
+                }}
+                @media (prefers-reduced-motion: reduce) {
+                    .lab-auth > .lab-auth-copy,
+                    .lab-auth > .lab-auth-panel {
+                        transition: none;
+                    }}
+
+                    /* Cadangkan tinggi teks sambutan agar mode tetap stabil di layar kecil. */
+                    .lab-auth > .lab-auth-copy {
+                        display: grid;
+                    }
+                    .lab-auth-copy > div {
+                        grid-area: 1 / 1;
+                        min-width: 0;
+                        visibility: hidden;
+                        pointer-events: none;
+                    }
+                    .lab-auth[data-mode="login"] .lab-auth-copy-login,
+                    .lab-auth[data-mode="register"] .lab-auth-copy-register {
+                        visibility: visible;
+                        pointer-events: auto;
+                    }

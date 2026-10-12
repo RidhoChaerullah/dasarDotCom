@@ -1,0 +1,60 @@
+/* Navigasi dan tema */
+.site-header {
+    border-bottom: 1px solid var(--line);
+    background: var(--card);
+}
+.nav-link {
+    color: var(--muted);
+    transition: color 0.15s;
+}
+.nav-link:hover,
+.nav-link[aria-current="page"] {
+    color: var(--link);
+}
+.theme-toggle {
+    border: 1px solid var(--line);
+    padding: 0.55rem 0.8rem;
+    border-radius: 0.8rem;
+    font-size: 0.8rem;
+}
+.theme-to-dark {
+    display: none;
+}
+[data-theme="light"] .theme-to-light {
+    display: none;
+}
+[data-theme="light"] .theme-to-dark {
+    display: inline;
+}
+.dashboard-hero {
+    background-image: radial-gradient(
+    ellipse at right top,
+    rgb(0 130 194 / 0.12),
+    transparent 70%
+    );
+}
+.banner-poster {
+    width: 100%;
+    height: clamp(220px, 38vw, 460px);
+    object-fit: contain;
+    background: var(--input);
+}
+.weather-card {
+    padding: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+}
+.weather-symbol {
+    color: var(--link);
+    font-size: 3.5rem;
+    line-height: 1;
+}
+.welcome-hero {
+    min-height: 65vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

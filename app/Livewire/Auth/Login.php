@@ -6,9 +6,12 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Validation\ValidationException;
 use Livewire\Component;
+use App\Livewire\Auth\Concerns\TransitionsAfterAuthentication;
 
 class Login extends Component
 {
+    use TransitionsAfterAuthentication;
+
     public string $email = '';
     public string $password = '';
 
@@ -58,7 +61,9 @@ class Login extends Component
 
         $this->reset('password');
 
-        return redirect()->intended(route('dashboard'));
+        return $this->transitionAfterAuthentication(
+            (string) request()->session()->pull('url.intended', route('dashboard'))
+        );
     }
 
     public function render()

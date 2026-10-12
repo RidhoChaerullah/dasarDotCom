@@ -1,0 +1,669 @@
+/* Dashboard — tata letak, tombol, galeri, dan agenda */
+.lab-dashboard {
+    --dash-soft: color-mix(in srgb, var(--link) 7%, var(--page));
+    --dash-line: color-mix(in srgb, var(--line) 60%, transparent);
+    width: 100%;
+    min-width: 0;
+    color: var(--text);
+}
+.lab-dashboard *,
+.lab-dashboard *::before,
+.lab-dashboard *::after {
+    box-sizing: border-box;
+}
+.lab-dashboard :is(h1, h2, h3, p) {
+    margin: 0;
+}
+.lab-dashboard svg {
+    display: block;
+    width: 20px;
+    height: 20px;
+    flex: 0 0 auto;
+}
+.lab-dashboard :is(a, button) {
+    -webkit-tap-highlight-color: transparent;
+}
+.lab-dashboard a {
+    text-decoration: none;
+}
+.lab-dashboard :is(a, button):focus-visible {
+    outline: 2px solid var(--link);
+    outline-offset: 4px;
+}
+.lab-dashboard .dash-eyebrow {
+    font-size: 10px;
+    line-height: 1.5;
+    font-weight: 650;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+}
+.lab-dashboard .dash-muted {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.7;
+}
+.lab-dashboard .dash-accent {
+    color: var(--link);
+}
+.lab-dashboard .dash-welcome {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 28px;
+    padding: 6px 0 26px;
+}
+.lab-dashboard .dash-welcome-copy {
+    min-width: 0;
+}
+.lab-dashboard .dash-welcome .dash-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--link);
+}
+.lab-dashboard .dash-status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+}
+.lab-dashboard h1 {
+    margin: 12px 0 10px;
+    font-size: clamp(28px, 3.4vw, 42px);
+    font-weight: 700;
+    line-height: 1.14;
+    letter-spacing: -0.045em;
+    overflow-wrap: anywhere;
+}
+.lab-dashboard .dash-date {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    max-width: 290px;
+    flex-shrink: 0;
+}
+.lab-dashboard .dash-date > svg {
+    color: var(--link);
+    width: 22px;
+    height: 22px;
+}
+.lab-dashboard .dash-date strong {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.6;
+}
+.lab-dashboard .dash-date span {
+    display: block;
+    margin-top: 4px;
+    font-size: 11px;
+    color: var(--muted);
+    overflow-wrap: anywhere;
+}
+.lab-dashboard .dash-shortcuts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding-bottom: 30px;
+    margin-bottom: 28px;
+    border-bottom: 1px solid var(--dash-line);
+}
+.lab-dashboard .dash-shortcut {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    min-height: 46px;
+    padding: 11px 16px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: transparent;
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 600;
+    transition:
+    background 160ms,
+    border-color 160ms;
+}
+.lab-dashboard .dash-shortcut > svg:first-child {
+    color: var(--link);
+    width: 18px;
+    height: 18px;
+}
+.lab-dashboard .dash-shortcut > svg:last-child {
+    width: 15px;
+    height: 15px;
+    margin-left: 16px;
+    opacity: 0.6;
+}
+.lab-dashboard .dash-shortcut:hover {
+    background: var(--dash-soft);
+    border-color: var(--link);
+}
+.lab-dashboard .dash-shortcut.is-primary {
+    background: #006199;
+    border-color: #006199;
+    color: white;
+}
+.lab-dashboard .dash-shortcut.is-primary svg {
+    color: white;
+    opacity: 1;
+}
+.lab-dashboard .dash-shortcut.is-primary:hover {
+    background: #005481;
+    border-color: #005481;
+}
+.lab-dashboard .dash-columns {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 310px;
+    gap: 36px;
+    align-items: start;
+}
+.lab-dashboard .dash-columns > * {
+    min-width: 0;
+}
+.lab-dashboard .dash-section-heading {
+    min-height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+.lab-dashboard .dash-section-heading h2 {
+    margin-top: 6px;
+    font-size: 24px;
+    line-height: 1.2;
+    font-weight: 650;
+    letter-spacing: -0.035em;
+}
+.lab-dashboard .dash-manage {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 10px 12px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 500;
+    flex-shrink: 0;
+}
+.lab-dashboard .dash-manage svg {
+    width: 15px;
+    height: 15px;
+}
+.lab-dashboard .dash-manage:hover {
+    color: var(--link);
+    background: var(--dash-soft);
+}
+.lab-dashboard .dash-carousel {
+    min-width: 0;
+}
+.lab-dashboard .gallery-window {
+    width: 100%;
+    min-width: 0;
+    overflow: hidden;
+    border-radius: 20px 20px 0 0;
+    touch-action: pan-y;
+}
+.lab-dashboard .gallery-track {
+    display: flex;
+    width: 100%;
+    transition: transform 650ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.lab-dashboard .gallery-slide {
+    flex: 0 0 100%;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+}
+.lab-dashboard .dash-poster-stage {
+    display: grid;
+    place-items: center;
+    height: 360px;
+    padding: 20px;
+    border-radius: 20px;
+    background: radial-gradient(
+    ellipse at 50% 40%,
+    color-mix(in srgb, var(--link) 13%, var(--page)),
+    var(--dash-soft)
+    );
+}
+.lab-dashboard .dash-poster {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    object-fit: contain;
+    filter: drop-shadow(0 10px 18px rgb(0 0 0 / 0.13));
+}
+.lab-dashboard .dash-poster-caption {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px 20px;
+    padding: 20px 0 18px;
+}
+.lab-dashboard .dash-poster-caption > div {
+    flex: 1 1 220px;
+    min-width: 0;
+}
+.lab-dashboard .dash-poster-caption h3 {
+    margin-top: 6px;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: -0.025em;
+    overflow-wrap: anywhere;
+}
+.lab-dashboard .dash-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 42px;
+    padding: 10px 14px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--link);
+    flex-shrink: 0;
+}
+.lab-dashboard .dash-cta:hover {
+    background: var(--dash-soft);
+    border-color: var(--link);
+}
+.lab-dashboard .dash-cta svg {
+    width: 16px;
+    height: 16px;
+}
+.lab-dashboard .dash-gallery-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--dash-line);
+}
+.lab-dashboard .dash-gallery-position {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+}
+.lab-dashboard .dash-gallery-count {
+    color: var(--muted);
+    font-size: 11px;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+.lab-dashboard .gallery-dots {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1px;
+    max-width: 220px;
+}
+.lab-dashboard .gallery-dot {
+    display: grid;
+    place-items: center;
+    width: 22px;
+    height: 32px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+}
+.lab-dashboard .gallery-dot::after {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 3px;
+    background: var(--muted);
+    opacity: 0.35;
+    transition:
+    width 180ms,
+    opacity 180ms;
+}
+.lab-dashboard .gallery-dot.is-active::after {
+    width: 18px;
+    background: var(--link);
+    opacity: 1;
+}
+.lab-dashboard .dash-gallery-buttons {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+}
+.lab-dashboard .dash-icon-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    flex-shrink: 0;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: transparent;
+    color: var(--text);
+    cursor: pointer;
+    transition: background 160ms;
+}
+.lab-dashboard .dash-icon-button svg {
+    width: 17px;
+    height: 17px;
+}
+.lab-dashboard .dash-icon-button:hover {
+    background: var(--dash-soft);
+    color: var(--link);
+}
+.lab-dashboard .dash-playback {
+    border-color: transparent;
+    color: var(--muted);
+    margin-right: 4px;
+}
+.lab-dashboard .dash-sidebar {
+    padding-left: 28px;
+    border-left: 1px solid var(--dash-line);
+}
+.lab-dashboard .dash-agenda-heading {
+    gap: 8px;
+    margin-bottom: 10px;
+}
+.lab-dashboard .dash-agenda-heading h2 {
+    font-size: 19px;
+}
+.lab-dashboard .dash-agenda-heading .dash-icon-button {
+    width: 34px;
+    height: 34px;
+    border-color: transparent;
+    color: var(--muted);
+}
+.lab-dashboard .dash-agenda-note {
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.6;
+}
+.lab-dashboard .dash-agenda-list {
+    margin-top: 24px;
+}
+.lab-dashboard .dash-agenda-item {
+    display: grid;
+    grid-template-columns: 46px minmax(0, 1fr);
+    gap: 16px;
+    padding-bottom: 24px;
+}
+.lab-dashboard .dash-agenda-time {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-variant-numeric: tabular-nums;
+    line-height: 1.5;
+}
+.lab-dashboard .dash-agenda-time strong {
+    font-size: 13px;
+    color: var(--link);
+    font-weight: 650;
+}
+.lab-dashboard .dash-agenda-time span {
+    font-size: 11px;
+    color: var(--muted);
+}
+.lab-dashboard .dash-agenda-detail {
+    border-left: 2px solid var(--line);
+    padding-left: 14px;
+    min-width: 0;
+}
+.lab-dashboard .dash-agenda-item:first-child .dash-agenda-detail {
+    border-color: var(--link);
+}
+.lab-dashboard .dash-agenda-detail h3 {
+    font-size: 14px;
+    line-height: 1.4;
+    font-weight: 600;
+    overflow-wrap: anywhere;
+}
+.lab-dashboard .dash-agenda-detail p {
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.7;
+    margin-top: 4px;
+    overflow-wrap: anywhere;
+}
+.lab-dashboard .dash-semester {
+    display: inline-block;
+    margin-top: 6px;
+    color: var(--muted);
+    font-size: 10px;
+}
+.lab-dashboard .dash-text-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--link);
+}
+.lab-dashboard .dash-text-link svg {
+    width: 15px;
+    height: 15px;
+}
+.lab-dashboard .dash-screen {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding-top: 24px;
+    margin-top: 8px;
+    border-top: 1px solid var(--dash-line);
+}
+.lab-dashboard .dash-screen-icon {
+    color: var(--link);
+    margin-top: 1px;
+}
+.lab-dashboard .dash-screen-icon svg {
+    width: 20px;
+    height: 20px;
+}
+.lab-dashboard .dash-screen h2 {
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+}
+.lab-dashboard .dash-screen .dash-muted {
+    margin-top: 8px;
+    font-size: 12px;
+}
+.lab-dashboard .dash-screen-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 14px;
+    min-height: 36px;
+    color: var(--link);
+    font-size: 12px;
+    font-weight: 600;
+}
+.lab-dashboard .dash-screen-link:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+.lab-dashboard .dash-screen-link svg {
+    width: 15px;
+    height: 15px;
+}
+.lab-dashboard .dash-screen-status {
+    color: var(--muted);
+    font-size: 11px;
+    margin-top: 14px;
+}
+.lab-dashboard .dash-empty-events {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 18px;
+    min-height: 360px;
+    padding: 36px;
+    border-radius: 20px;
+    background: var(--dash-soft);
+}
+.lab-dashboard .dash-empty-icon {
+    color: var(--link);
+}
+.lab-dashboard .dash-empty-icon svg {
+    width: 36px;
+    height: 36px;
+}
+.lab-dashboard .dash-empty-events h3 {
+    font-size: 28px;
+    line-height: 1.25;
+    font-weight: 600;
+    letter-spacing: -0.035em;
+}
+.lab-dashboard .dash-empty-events .dash-muted {
+    max-width: 300px;
+}
+.lab-dashboard .dash-empty-agenda {
+    padding: 0 0 24px;
+}
+.lab-dashboard .dash-empty-agenda p {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+.lab-dashboard .dash-empty-agenda span {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.7;
+}
+.lab-dashboard .dash-weather {
+    padding-top: 24px;
+    margin-top: 32px;
+    border-top: 1px solid var(--dash-line);
+}
+.lab-dashboard .dash-weather > section {
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    backdrop-filter: none;
+}
+.lab-dashboard .dash-weather .weather-card {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+}
+.lab-dashboard .dash-weather .weather-card > * {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+.lab-dashboard .dash-weather .weather-card h2 {
+    font-size: 17px;
+}
+.lab-dashboard .dash-weather .weather-card .text-4xl {
+    font-size: 28px;
+}
+.lab-dashboard .dash-weather .weather-symbol {
+    font-size: 36px;
+}
+.lab-dashboard .dash-weather .weather-card .text-sm {
+    font-size: 12px;
+}
+@media (max-width: 1000px) {
+    .lab-dashboard .dash-columns {
+        grid-template-columns: minmax(0, 1fr) 280px;
+        gap: 24px;
+    }
+    .lab-dashboard .dash-sidebar {
+        padding-left: 20px;
+    }
+    .lab-dashboard .dash-section-heading h2 {
+        font-size: 21px;
+    }
+    .lab-dashboard .dash-agenda-heading h2 {
+        font-size: 18px;
+    }}
+    @media (max-width: 800px) {
+        .lab-dashboard .dash-welcome {
+            align-items: flex-start;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .lab-dashboard .dash-date {
+            max-width: none;
+        }
+        .lab-dashboard .dash-columns {
+            grid-template-columns: minmax(0, 1fr);
+            gap: 32px;
+        }
+        .lab-dashboard .dash-sidebar {
+            border-left: 0;
+            padding-left: 0;
+            padding-top: 24px;
+            border-top: 1px solid var(--dash-line);
+        }
+        .lab-dashboard .dash-shortcuts {
+            margin-bottom: 24px;
+            padding-bottom: 24px;
+        }
+        .lab-dashboard .dash-poster-stage {
+            height: clamp(280px, 55vw, 400px);
+        }}
+        @media (max-width: 480px) {
+            .lab-dashboard .dash-shortcuts {
+                display: grid;
+                grid-template-columns: minmax(0, 1fr);
+            }
+            .lab-dashboard .dash-shortcut > svg:last-child {
+                margin-left: auto;
+            }
+            .lab-dashboard .dash-section-heading {
+                gap: 10px;
+            }
+            .lab-dashboard .dash-section-heading h2 {
+                font-size: 21px;
+            }
+            .lab-dashboard .dash-manage {
+                padding: 10px;
+            }
+            .lab-dashboard .dash-manage span {
+                display: none;
+            }
+            .lab-dashboard .dash-manage::after {
+                content: "Kelola";
+                position: absolute;
+                width: 1px;
+                height: 1px;
+                overflow: hidden;
+                clip-path: inset(50%);
+            }
+            .lab-dashboard .dash-poster-stage {
+                padding: 14px;
+            }
+            .lab-dashboard .dash-poster-caption {
+                align-items: flex-start;
+            }
+            .lab-dashboard .dash-poster-caption > div {
+                flex-basis: 100%;
+            }
+            .lab-dashboard .dash-gallery-position {
+                gap: 2px 8px;
+            }
+            .lab-dashboard .gallery-dots {
+                max-width: 110px;
+            }
+            .lab-dashboard .dash-empty-events {
+                padding: 24px;
+            }}
+            @media (prefers-reduced-motion: reduce) {
+                .lab-dashboard .gallery-track,
+                .lab-dashboard .gallery-dot::after {
+                    transition: none;
+                }}

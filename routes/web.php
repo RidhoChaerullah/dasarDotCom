@@ -16,7 +16,7 @@ use App\Livewire\Schedules\Index as SchedulesIndex;
 use App\Livewire\Users\Index as UsersIndex;
 use App\Livewire\Profile\Index as ProfileIndex;
 
-Route::view('/', 'welcome')->name('home');
+require __DIR__.'/welcome.php';
 
 Route::middleware('guest')->group(function () {
     Route::get('/login', \App\Livewire\Auth\Portal::class)->name('login');

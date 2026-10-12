@@ -10,9 +10,12 @@ use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\Validation\ValidationException;
 use Livewire\Component;
+use App\Livewire\Auth\Concerns\TransitionsAfterAuthentication;
 
 class Register extends Component
 {
+    use TransitionsAfterAuthentication;
+
     public string $name = '';
     public string $nim = '';
     public string $email = '';
@@ -73,7 +76,7 @@ class Register extends Component
 
         $this->reset('password', 'password_confirmation');
 
-        return redirect()->route('dashboard');
+        return $this->transitionAfterAuthentication(route('dashboard'));
     }
 
     public function render()

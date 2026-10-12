@@ -1,0 +1,408 @@
+/* Pengelolaan — pengguna, banner, dan kategori */
+.lab-admin {
+    min-width: 0;
+    color: var(--text);
+}
+.lab-admin *,
+.lab-admin *::before,
+.lab-admin *::after {
+    box-sizing: border-box;
+}
+.lab-admin :is(button, input, select, textarea, a):focus-visible {
+    outline: 2px solid var(--link);
+    outline-offset: 4px;
+}
+.lab-admin .admin-heading {
+    padding: 6px 0 28px;
+}
+.lab-admin .admin-eyebrow {
+    font-size: 10px;
+    font-weight: 650;
+    letter-spacing: 0.14em;
+    line-height: 1.7;
+    color: var(--link);
+}
+.lab-admin .admin-title {
+    margin: 12px 0 10px;
+    font-size: clamp(28px, 3.4vw, 40px);
+    font-weight: 700;
+    line-height: 1.18;
+    letter-spacing: -0.04em;
+    overflow-wrap: anywhere;
+}
+.lab-admin .admin-description {
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--muted);
+}
+.lab-admin .admin-back {
+    display: inline-flex;
+    align-items: center;
+    min-height: 36px;
+    font-size: 12px;
+    color: var(--link);
+    text-decoration: none;
+}
+.lab-admin .admin-back:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+.lab-admin.admin-banners .admin-back {
+    margin-top: 10px;
+}
+.lab-admin .admin-notice,
+.lab-admin .admin-alert {
+    padding: 14px 16px;
+    margin-bottom: 24px;
+    border: 1px solid;
+    border-radius: 12px;
+    font-size: 13px;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+}
+.lab-admin .admin-notice {
+    color: var(--success);
+    border-color: color-mix(in srgb, var(--success) 22%, transparent);
+    background: color-mix(in srgb, var(--success) 8%, transparent);
+}
+.lab-admin .admin-alert {
+    color: var(--danger);
+    border-color: color-mix(in srgb, var(--danger) 22%, transparent);
+    background: color-mix(in srgb, var(--danger) 8%, transparent);
+}
+.lab-admin > .form-error {
+    margin-bottom: 20px;
+}
+.lab-admin .admin-editor {
+    min-width: 0;
+    padding: 26px;
+    margin-bottom: 26px;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: var(--card);
+}
+.lab-admin .admin-editor > h2 {
+    font-size: 19px;
+    line-height: 1.5;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    overflow-wrap: anywhere;
+}
+.lab-admin .form-label {
+    margin-bottom: 8px;
+    font-size: 12px;
+    font-weight: 600;
+}
+.lab-admin .form-input {
+    width: 100%;
+    min-width: 0;
+    min-height: 44px;
+    padding: 11px 13px;
+    border-radius: 10px;
+    font-size: 14px;
+}
+.lab-admin .form-error {
+    margin-top: 8px;
+    font-size: 12px;
+}
+.lab-admin .admin-editor p {
+    line-height: 1.7;
+}
+.lab-admin .admin-toggle {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px;
+    border-radius: 10px;
+    background: color-mix(in srgb, var(--link) 6%, var(--page));
+    cursor: pointer;
+    font-size: 12px;
+}
+.lab-admin .admin-toggle input {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    accent-color: #006199;
+}
+.lab-admin .admin-form-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+}
+.lab-admin .button-primary,
+.lab-admin .admin-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    padding: 10px 14px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.4;
+    cursor: pointer;
+    transition:
+    background 160ms,
+    border-color 160ms;
+}
+.lab-admin .button-primary {
+    color: white;
+    background: #006199;
+    border-color: #006199;
+}
+.lab-admin .button-primary:hover {
+    background: #005481;
+    border-color: #005481;
+}
+.lab-admin .admin-button-quiet {
+    background: transparent;
+    color: var(--muted);
+    border-color: var(--line);
+}
+.lab-admin .admin-button-quiet:hover {
+    color: var(--link);
+    background: var(--hover);
+}
+.lab-admin .admin-button-danger {
+    background: transparent;
+    color: var(--danger);
+}
+.lab-admin .admin-button-danger:hover {
+    border-color: color-mix(in srgb, var(--danger) 25%, transparent);
+    background: color-mix(in srgb, var(--danger) 8%, transparent);
+}
+.lab-admin button:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+.lab-admin .admin-card {
+    min-width: 0;
+    padding: 22px 24px;
+    border: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
+    border-radius: 16px;
+    background: color-mix(in srgb, var(--card) 40%, transparent);
+}
+.lab-admin .admin-card h2 {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: -0.025em;
+    overflow-wrap: anywhere;
+}
+.lab-admin .admin-card p {
+    font-size: 12px;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+}
+.lab-admin .admin-badge {
+    display: inline-flex;
+    padding: 5px 9px;
+    border-radius: 6px;
+    font-size: 10px;
+    line-height: 1.5;
+    font-weight: 600;
+}
+.lab-admin .admin-badge-role {
+    color: var(--link);
+    background: color-mix(in srgb, var(--link) 10%, transparent);
+}
+.lab-admin .admin-pagination {
+    margin-top: 26px;
+}
+.lab-admin .admin-empty {
+    grid-column: 1 / -1;
+    padding: 48px 24px;
+    border-radius: 16px;
+    background: color-mix(in srgb, var(--link) 6%, var(--page));
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.7;
+    text-align: center;
+}
+.lab-admin .admin-user-filters {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    padding: 22px 0;
+    border-top: 1px solid var(--line);
+}
+.lab-admin .admin-user-filters .form-input {
+    background: transparent;
+    font-size: 13px;
+}
+.lab-admin .admin-result-count {
+    margin-bottom: 16px;
+    font-size: 12px;
+    color: var(--muted);
+}
+.lab-admin .admin-user-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+.lab-admin .admin-user-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 18px;
+}
+.lab-admin .admin-category-layout {
+    display: grid;
+    grid-template-columns: minmax(280px, 0.85fr) minmax(0, 1.6fr);
+    gap: 26px;
+    align-items: start;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+}
+.lab-admin .admin-category-list {
+    display: grid;
+    gap: 14px;
+}
+.lab-admin .admin-category-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    justify-content: space-between;
+}
+.lab-admin .admin-category-row > .min-w-0 {
+    flex: 1;
+}
+.lab-admin .admin-category-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    flex-shrink: 0;
+}
+.lab-admin .admin-section-title {
+    padding-top: 24px;
+    margin: 28px 0 20px;
+    border-top: 1px solid var(--line);
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+}
+.lab-admin .admin-banner-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+.lab-admin .admin-banner-card {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: color-mix(in srgb, var(--card) 40%, transparent);
+}
+.lab-admin .admin-banner-image {
+    display: block;
+    width: 100%;
+    height: 240px;
+    padding: 14px;
+    object-fit: contain;
+    background: var(--input);
+    border-bottom: 1px solid var(--line);
+}
+.lab-admin .admin-banner-content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 20px;
+}
+.lab-admin .admin-banner-content h2 {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+.lab-admin .admin-banner-content > p {
+    font-size: 11px;
+    line-height: 1.7;
+}
+.lab-admin .admin-banner-content > a {
+    font-size: 12px;
+}
+.lab-admin .admin-banner-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: auto;
+    padding-top: 8px;
+}
+.lab-admin .admin-banner-actions .admin-button {
+    min-height: 36px;
+    padding: 8px 10px;
+    font-size: 11px;
+}
+.lab-admin input[type="file"] {
+    padding: 8px;
+    font-size: 12px;
+    overflow: hidden;
+}
+.lab-admin input[type="file"]::file-selector-button {
+    margin-right: 8px;
+    padding: 7px 9px;
+    border: 0;
+    border-radius: 6px;
+    background: var(--hover);
+    color: var(--link);
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+}
+@media (max-width: 1000px) {
+    .lab-admin .admin-user-list {
+        grid-template-columns: minmax(0, 1fr);
+    }
+    .lab-admin .admin-banner-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .lab-admin .admin-category-row {
+        flex-direction: column;
+        gap: 16px;
+    }}
+    @media (max-width: 800px) {
+        .lab-admin .admin-category-layout {
+            grid-template-columns: minmax(0, 1fr);
+            gap: 0;
+        }
+        .lab-admin .admin-user-filters {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        .lab-admin .admin-user-search {
+            grid-column: 1 / -1;
+        }
+        .lab-admin .admin-category-row {
+            flex-direction: row;
+        }}
+        @media (max-width: 600px) {
+            .lab-admin .admin-editor,
+            .lab-admin .admin-card {
+                padding: 20px;
+            }
+            .lab-admin .admin-banner-grid {
+                grid-template-columns: minmax(0, 1fr);
+            }
+            .lab-admin .admin-user-row,
+            .lab-admin .admin-category-row {
+                flex-direction: column;
+            }
+            .lab-admin .admin-user-row > .shrink-0 {
+                padding-top: 14px;
+                border-top: 1px solid var(--line);
+                width: 100%;
+            }
+            .lab-admin .form-input,
+            .lab-admin .admin-user-filters .form-input {
+                font-size: 16px;
+            }
+            .lab-admin input[type="file"] {
+                font-size: 12px;
+            }}

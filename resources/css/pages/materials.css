@@ -1,0 +1,626 @@
+/* Materi — penjelajah folder dan file */
+.lab-materials {
+    --mat-soft: color-mix(in srgb, var(--link) 6%, var(--page));
+    --mat-line: color-mix(in srgb, var(--line) 65%, transparent);
+    width: 100%;
+    min-width: 0;
+    color: var(--text);
+}
+.lab-materials *,
+.lab-materials *::before,
+.lab-materials *::after {
+    box-sizing: border-box;
+}
+.lab-materials :is(h1, h2, h3, p) {
+    margin: 0;
+}
+.lab-materials svg {
+    display: block;
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+.lab-materials a {
+    text-decoration: none;
+}
+.lab-materials :is(button, a, input):focus-visible {
+    outline: 2px solid var(--link);
+    outline-offset: 4px;
+}
+.lab-materials button {
+    cursor: pointer;
+}
+.lab-materials button:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+}
+.lab-materials .mat-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 6px 0 28px;
+}
+.lab-materials .mat-header > div {
+    min-width: 0;
+}
+.lab-materials .mat-eyebrow {
+    color: var(--link);
+    font-size: 10px;
+    font-weight: 650;
+    line-height: 1.5;
+    letter-spacing: 0.15em;
+}
+.lab-materials h1 {
+    margin: 12px 0 10px;
+    font-size: clamp(28px, 3.4vw, 42px);
+    font-weight: 700;
+    line-height: 1.14;
+    letter-spacing: -0.045em;
+}
+.lab-materials h1 > span {
+    color: var(--link);
+}
+.lab-materials .mat-subtitle {
+    max-width: 600px;
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.7;
+}
+.lab-materials .mat-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    min-height: 42px;
+    padding: 10px 15px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.4;
+    white-space: nowrap;
+    color: var(--text);
+    background: transparent;
+    flex-shrink: 0;
+    transition:
+    background 160ms,
+    border-color 160ms;
+}
+.lab-materials .mat-button svg {
+    width: 18px;
+    height: 18px;
+}
+.lab-materials .mat-button-primary {
+    background: #006199;
+    border-color: #006199;
+    color: white;
+}
+.lab-materials .mat-button-primary:hover {
+    background: #005481;
+    border-color: #005481;
+}
+.lab-materials .mat-button-quiet {
+    color: var(--muted);
+}
+.lab-materials .mat-button-quiet:hover {
+    background: var(--mat-soft);
+    color: var(--link);
+}
+.lab-materials .mat-notice,
+.lab-materials .mat-alert {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 14px 16px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    font-size: 13px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+.lab-materials .mat-notice {
+    background: color-mix(in srgb, var(--success) 8%, transparent);
+    color: var(--success);
+    border: 1px solid color-mix(in srgb, var(--success) 22%, transparent);
+}
+.lab-materials .mat-alert {
+    background: color-mix(in srgb, var(--danger) 8%, transparent);
+    color: var(--danger);
+    border: 1px solid color-mix(in srgb, var(--danger) 22%, transparent);
+}
+.lab-materials .mat-upload {
+    margin-bottom: 26px;
+    padding: 24px;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    background: var(--card);
+}
+.lab-materials .mat-upload-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 22px;
+}
+.lab-materials .mat-upload-heading h2 {
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+}
+.lab-materials .mat-upload-heading p {
+    margin-top: 6px;
+    font-size: 12px;
+    line-height: 1.7;
+    color: var(--muted);
+}
+.lab-materials .mat-upload-form {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 20px;
+    align-items: start;
+}
+.lab-materials .mat-upload-form > div {
+    min-width: 0;
+}
+.lab-materials .form-label {
+    font-size: 12px;
+    margin-bottom: 8px;
+}
+.lab-materials .form-input {
+    min-height: 44px;
+    padding: 10px 13px;
+    border-radius: 10px;
+    font-size: 14px;
+}
+.lab-materials .form-error {
+    margin-top: 8px;
+    font-size: 12px;
+}
+.lab-materials .mat-file-input {
+    width: 100%;
+    overflow: hidden;
+    font-size: 12px;
+    padding: 7px 9px;
+}
+.lab-materials .mat-file-input::file-selector-button {
+    margin-right: 10px;
+    padding: 6px 9px;
+    border: 0;
+    border-radius: 6px;
+    background: var(--hover);
+    color: var(--link);
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+}
+.lab-materials .mat-help {
+    margin-top: 8px;
+    font-size: 11px;
+    line-height: 1.7;
+    color: var(--muted);
+}
+.lab-materials .mat-upload-status {
+    margin-top: 8px;
+    font-size: 12px;
+    color: var(--link);
+}
+.lab-materials .mat-upload-footer {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--mat-line);
+}
+.lab-materials .mat-upload-location {
+    font-size: 12px;
+    color: var(--muted);
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+.lab-materials .mat-location-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 18px 0;
+    border-top: 1px solid var(--mat-line);
+    border-bottom: 1px solid var(--mat-line);
+}
+.lab-materials .mat-breadcrumb {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    min-width: 0;
+    font-size: 13px;
+    line-height: 1.7;
+}
+.lab-materials .mat-breadcrumb-icon {
+    color: var(--link);
+    margin-right: 4px;
+}
+.lab-materials .mat-breadcrumb button {
+    border: 0;
+    padding: 2px 0;
+    color: var(--link);
+    background: transparent;
+    font-size: inherit;
+    font-weight: 600;
+}
+.lab-materials .mat-breadcrumb button:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+.lab-materials .mat-current-root {
+    font-weight: 600;
+}
+.lab-materials .mat-breadcrumb-separator {
+    color: var(--muted);
+    opacity: 0.6;
+}
+.lab-materials .mat-current-path {
+    min-width: 0;
+    overflow-wrap: anywhere;
+    color: var(--muted);
+}
+.lab-materials .mat-location-bar .mat-button {
+    min-height: 36px;
+    font-size: 12px;
+    padding: 8px 12px;
+}
+.lab-materials .mat-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 26px 0 18px;
+}
+.lab-materials .mat-list-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+.lab-materials .mat-list-title h2 {
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+}
+.lab-materials .mat-list-title > span {
+    color: var(--muted);
+    font-size: 11px;
+    padding: 4px 8px;
+    border-radius: 6px;
+    background: var(--mat-soft);
+}
+.lab-materials .mat-search {
+    position: relative;
+    width: 320px;
+    max-width: 100%;
+    flex-shrink: 0;
+}
+.lab-materials .mat-search > svg {
+    position: absolute;
+    left: 13px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 17px;
+    height: 17px;
+    color: var(--muted);
+    pointer-events: none;
+}
+.lab-materials .mat-search input {
+    width: 100%;
+    min-height: 42px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 10px 12px 10px 39px;
+    color: var(--text);
+    background: transparent;
+    font-size: 13px;
+}
+.lab-materials .mat-search input::placeholder {
+    color: var(--muted);
+}
+.lab-materials .mat-entry-list {
+    border-top: 1px solid var(--mat-line);
+}
+.lab-materials .mat-entry {
+    border-bottom: 1px solid var(--mat-line);
+}
+.lab-materials .mat-folder-row,
+.lab-materials .mat-file-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    min-width: 0;
+    padding: 17px 12px;
+    text-align: left;
+    border: 0;
+    border-radius: 10px;
+    background: transparent;
+    color: var(--text);
+    transition: background 160ms;
+}
+.lab-materials .mat-folder-row:hover,
+.lab-materials .mat-file-row:hover {
+    background: var(--mat-soft);
+}
+.lab-materials .mat-entry-icon {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    flex: 0 0 44px;
+    border-radius: 12px;
+}
+.lab-materials .mat-entry-icon svg {
+    width: 23px;
+    height: 23px;
+}
+.lab-materials .mat-entry-icon.is-folder {
+    color: var(--warning);
+    background: color-mix(in srgb, var(--warning) 10%, transparent);
+}
+.lab-materials .mat-entry-icon.is-file {
+    color: var(--link);
+    background: color-mix(in srgb, var(--link) 8%, transparent);
+}
+.lab-materials .mat-entry-copy {
+    display: block;
+    flex: 1 1 auto;
+    min-width: 0;
+}
+.lab-materials .mat-entry-name {
+    display: block;
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 600;
+    overflow-wrap: anywhere;
+}
+.lab-materials .mat-entry-meta {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin-top: 5px;
+    font-size: 11px;
+    line-height: 1.5;
+    color: var(--muted);
+}
+.lab-materials .mat-file-type {
+    max-width: 80px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+}
+.lab-materials .mat-open-folder {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+    font-size: 12px;
+    color: var(--muted);
+}
+.lab-materials .mat-open-folder svg {
+    width: 16px;
+    height: 16px;
+}
+.lab-materials .mat-folder-row:hover .mat-open-folder {
+    color: var(--link);
+}
+.lab-materials .mat-file-actions {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    gap: 6px;
+}
+.lab-materials .mat-download {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 38px;
+    padding: 9px 12px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    color: var(--link);
+    font-size: 12px;
+    font-weight: 600;
+}
+.lab-materials .mat-download svg {
+    width: 16px;
+    height: 16px;
+}
+.lab-materials .mat-download:hover {
+    border-color: var(--link);
+    background: color-mix(in srgb, var(--link) 8%, transparent);
+}
+.lab-materials .mat-action-divider {
+    display: block;
+    width: 1px;
+    height: 20px;
+    margin-inline: 5px;
+    background: var(--line);
+}
+.lab-materials .mat-icon-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    flex-shrink: 0;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    background: transparent;
+    color: var(--muted);
+}
+.lab-materials .mat-icon-button svg {
+    width: 17px;
+    height: 17px;
+}
+.lab-materials .mat-icon-button:hover {
+    color: var(--link);
+    border-color: var(--line);
+    background: var(--mat-soft);
+}
+.lab-materials .mat-icon-button.is-danger:hover {
+    color: var(--danger);
+    border-color: color-mix(in srgb, var(--danger) 25%, transparent);
+    background: color-mix(in srgb, var(--danger) 8%, transparent);
+}
+.lab-materials .mat-edit-form {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px 12px;
+    background: var(--mat-soft);
+    border-radius: 12px;
+}
+.lab-materials .mat-edit-field {
+    min-width: 0;
+    flex: 1;
+}
+.lab-materials .mat-edit-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    padding-top: 24px;
+}
+.lab-materials .mat-empty {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: 56px 20px;
+}
+.lab-materials .mat-empty-icon {
+    display: grid;
+    place-items: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    color: var(--link);
+    background: var(--mat-soft);
+    margin-bottom: 18px;
+}
+.lab-materials .mat-empty-icon svg {
+    width: 24px;
+    height: 24px;
+}
+.lab-materials .mat-empty h2 {
+    font-size: 19px;
+    line-height: 1.4;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+}
+.lab-materials .mat-empty p {
+    max-width: 400px;
+    margin-top: 9px;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.7;
+}
+.lab-materials .mat-footnote {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-top: 24px;
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.7;
+}
+.lab-materials .mat-footnote svg {
+    width: 15px;
+    height: 15px;
+    margin-top: 2px;
+}
+.lab-materials .mat-visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+}
+@media (max-width: 700px) {
+    .lab-materials .mat-header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 18px;
+    }
+    .lab-materials .mat-toolbar {
+        align-items: stretch;
+        flex-direction: column;
+        gap: 14px;
+    }
+    .lab-materials .mat-search {
+        width: 100%;
+    }
+    .lab-materials .mat-upload-form {
+        grid-template-columns: minmax(0, 1fr);
+    }
+    .lab-materials .mat-upload {
+        padding: 20px;
+    }
+    .lab-materials .mat-file-row {
+        flex-wrap: wrap;
+    }
+    .lab-materials .mat-file-row > .mat-entry-copy {
+        flex-basis: calc(100% - 60px);
+    }
+    .lab-materials .mat-file-actions {
+        margin-left: 59px;
+    }
+    .lab-materials .mat-edit-form {
+        flex-wrap: wrap;
+    }
+    .lab-materials .mat-edit-field {
+        flex-basis: calc(100% - 60px);
+    }
+    .lab-materials .mat-edit-actions {
+        padding-top: 0;
+        margin-left: 59px;
+    }}
+    @media (max-width: 420px) {
+        .lab-materials .mat-location-bar {
+            align-items: flex-start;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .lab-materials .mat-folder-row,
+        .lab-materials .mat-file-row {
+            padding-inline: 0;
+            gap: 12px;
+        }
+        .lab-materials .mat-open-folder {
+            font-size: 0;
+            gap: 0;
+        }
+        .lab-materials .mat-file-actions {
+            margin-left: 56px;
+        }
+        .lab-materials .mat-upload-footer {
+            align-items: flex-start;
+            flex-direction: column;
+        }
+        .lab-materials .form-input,
+        .lab-materials .mat-search input {
+            font-size: 16px;
+        }
+        .lab-materials .mat-file-input {
+            font-size: 12px;
+        }}

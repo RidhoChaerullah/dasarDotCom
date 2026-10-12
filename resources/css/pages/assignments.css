@@ -1,0 +1,447 @@
+/* Tugas — daftar, editor, detail, dan pengumpulan */
+.lab-tasks {
+    --task-soft: color-mix(in srgb, var(--link) 6%, var(--page));
+    --task-line: color-mix(in srgb, var(--line) 70%, transparent);
+    width: 100%;
+    min-width: 0;
+    color: var(--text);
+}
+.lab-tasks *,
+.lab-tasks *::before,
+.lab-tasks *::after {
+    box-sizing: border-box;
+}
+.lab-tasks :is(a, button, input, select, textarea, summary):focus-visible {
+    outline: 2px solid var(--link);
+    outline-offset: 4px;
+}
+.lab-tasks .tasks-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 6px 0 28px;
+}
+.lab-tasks .tasks-heading > div {
+    min-width: 0;
+}
+.lab-tasks .tasks-eyebrow {
+    font-size: 10px;
+    line-height: 1.7;
+    font-weight: 650;
+    letter-spacing: 0.14em;
+    color: var(--link);
+    overflow-wrap: anywhere;
+}
+.lab-tasks .tasks-title {
+    margin: 12px 0 10px;
+    font-size: clamp(28px, 3.4vw, 40px);
+    font-weight: 700;
+    line-height: 1.18;
+    letter-spacing: -0.04em;
+    overflow-wrap: anywhere;
+}
+.lab-tasks .tasks-description {
+    margin: 0;
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.8;
+    overflow-wrap: anywhere;
+}
+.lab-tasks .button-primary,
+.lab-tasks .task-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 42px;
+    padding: 10px 15px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.4;
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+    background 160ms,
+    border-color 160ms;
+}
+.lab-tasks .button-primary {
+    color: white;
+    background: #006199;
+    border-color: #006199;
+}
+.lab-tasks .button-primary:hover {
+    background: #005481;
+    border-color: #005481;
+}
+.lab-tasks .tasks-heading > .button-primary {
+    flex-shrink: 0;
+}
+.lab-tasks .task-button-quiet {
+    color: var(--muted);
+    background: transparent;
+    border-color: var(--line);
+}
+.lab-tasks .task-button-quiet:hover {
+    color: var(--link);
+    background: var(--task-soft);
+}
+.lab-tasks .task-button-danger {
+    color: var(--danger);
+    border-color: transparent;
+    background: transparent;
+}
+.lab-tasks .task-button-danger:hover {
+    border-color: color-mix(in srgb, var(--danger) 25%, transparent);
+    background: color-mix(in srgb, var(--danger) 8%, transparent);
+}
+.lab-tasks button:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+.lab-tasks .tasks-notice,
+.lab-tasks .tasks-alert {
+    padding: 14px 16px;
+    margin-bottom: 22px;
+    border: 1px solid;
+    border-radius: 12px;
+    font-size: 13px;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+}
+.lab-tasks .tasks-notice {
+    color: var(--success);
+    border-color: color-mix(in srgb, var(--success) 22%, transparent);
+    background: color-mix(in srgb, var(--success) 8%, transparent);
+}
+.lab-tasks .tasks-alert {
+    color: var(--danger);
+    border-color: color-mix(in srgb, var(--danger) 22%, transparent);
+    background: color-mix(in srgb, var(--danger) 8%, transparent);
+}
+.lab-tasks .task-editor {
+    padding: 26px;
+    margin-bottom: 26px;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    background: var(--card);
+}
+.lab-tasks .task-editor > h2 {
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+}
+.lab-tasks .form-label {
+    margin-bottom: 8px;
+    font-size: 12px;
+    font-weight: 600;
+}
+.lab-tasks .form-input {
+    width: 100%;
+    min-width: 0;
+    min-height: 44px;
+    padding: 11px 13px;
+    border-radius: 10px;
+    font-size: 14px;
+    color-scheme: inherit;
+}
+.lab-tasks .form-error {
+    margin-top: 8px;
+    font-size: 12px;
+}
+.lab-tasks .task-options {
+    display: grid;
+    gap: 12px;
+    padding: 16px;
+    border-radius: 12px;
+    background: var(--task-soft);
+}
+.lab-tasks .task-options input {
+    flex-shrink: 0;
+}
+.lab-tasks .task-form-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding-top: 18px;
+    border-top: 1px solid var(--task-line);
+}
+.lab-tasks .tasks-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 24px 0;
+    border-top: 1px solid var(--task-line);
+}
+.lab-tasks .tasks-toolbar h2 {
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+}
+.lab-tasks .tasks-toolbar p {
+    margin-top: 6px;
+    font-size: 12px;
+    line-height: 1.7;
+    color: var(--muted);
+}
+.lab-tasks .tasks-search {
+    width: 350px;
+    max-width: 100%;
+    flex-shrink: 0;
+}
+.lab-tasks .tasks-search .form-input {
+    background: transparent;
+    font-size: 13px;
+}
+.lab-tasks .task-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+.lab-tasks .task-card {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    border: 1px solid var(--task-line);
+    border-radius: 16px;
+    background: color-mix(in srgb, var(--card) 40%, transparent);
+}
+.lab-tasks .task-card > h2 {
+    margin-top: 16px;
+    font-size: 20px;
+    line-height: 1.4;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    overflow-wrap: anywhere;
+}
+.lab-tasks .task-card > p {
+    font-size: 13px;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+}
+.lab-tasks .task-badges {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.lab-tasks .task-badge {
+    display: inline-block;
+    padding: 5px 9px;
+    border-radius: 6px;
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+.lab-tasks .task-category {
+    color: var(--link);
+    background: color-mix(in srgb, var(--link) 10%, transparent);
+}
+.lab-tasks .task-deadline {
+    margin-top: 16px;
+    color: var(--warning);
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.7;
+}
+.lab-tasks .task-instructions-preview {
+    margin-top: 16px;
+}
+.lab-tasks .task-instructions-preview summary {
+    color: var(--link);
+    font-size: 12px;
+    cursor: pointer;
+}
+.lab-tasks .task-instructions-preview p {
+    font-size: 13px;
+    overflow-wrap: anywhere;
+}
+.lab-tasks .task-card-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding-top: 22px;
+    margin-top: auto;
+}
+.lab-tasks .task-card-actions .task-button,
+.lab-tasks .task-card-actions .button-primary {
+    min-height: 38px;
+    padding: 9px 12px;
+    font-size: 12px;
+}
+.lab-tasks .tasks-empty {
+    grid-column: 1 / -1;
+    padding: 56px 24px;
+    border-radius: 16px;
+    text-align: center;
+    font-size: 14px;
+    color: var(--muted);
+    background: var(--task-soft);
+}
+.lab-tasks .tasks-pagination {
+    margin-top: 26px;
+}
+.lab-tasks .task-back {
+    display: inline-flex;
+    align-items: center;
+    min-height: 38px;
+    margin-bottom: 22px;
+    color: var(--link);
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+}
+.lab-tasks .task-back:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+.lab-tasks .task-detail-layout {
+    display: flex;
+    align-items: flex-start;
+    gap: 32px;
+}
+.lab-tasks .task-overview {
+    flex: 1 1 0;
+    min-width: 0;
+    padding: 4px 0 24px;
+}
+.lab-tasks .task-overview .tasks-title {
+    font-size: clamp(26px, 3vw, 36px);
+}
+.lab-tasks .task-overview .task-deadline {
+    padding-top: 20px;
+    margin-top: 22px;
+    border-top: 1px solid var(--task-line);
+}
+.lab-tasks .task-collection-status {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 5px 9px;
+    border-radius: 6px;
+    color: var(--link);
+    background: var(--task-soft);
+    font-size: 11px;
+    font-weight: 600;
+}
+.lab-tasks .task-instructions {
+    padding-top: 26px;
+    margin-top: 26px;
+    border-top: 1px solid var(--task-line);
+}
+.lab-tasks .task-instructions h2 {
+    font-size: 17px;
+    font-weight: 600;
+}
+.lab-tasks .task-instructions p {
+    margin-top: 14px;
+    font-size: 14px;
+    line-height: 1.9;
+    overflow-wrap: anywhere;
+}
+.lab-tasks .task-submission {
+    flex: 0 0 360px;
+    width: 360px;
+    max-width: 100%;
+    min-width: 0;
+    padding: 24px;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: var(--card);
+}
+.lab-tasks .task-submission h2 {
+    font-size: 19px;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+}
+.lab-tasks .task-submission > p {
+    font-size: 13px;
+    line-height: 1.7;
+}
+.lab-tasks .task-submitted-file {
+    margin-top: 18px;
+    padding: 14px;
+    border-radius: 10px;
+    background: var(--task-soft);
+}
+.lab-tasks .task-submitted-file > p:first-child {
+    font-size: 12px;
+    overflow-wrap: anywhere;
+}
+.lab-tasks .task-submitted-file > p:last-child {
+    font-size: 11px;
+    line-height: 1.8;
+}
+.lab-tasks .task-file-input {
+    padding: 8px;
+    font-size: 12px;
+    overflow: hidden;
+}
+.lab-tasks .task-file-input::file-selector-button {
+    margin-right: 8px;
+    padding: 6px 8px;
+    border: 0;
+    border-radius: 6px;
+    background: var(--hover);
+    color: var(--link);
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+}
+.lab-tasks .task-submission form > .button-primary {
+    width: 100%;
+}
+.lab-tasks .task-destination {
+    padding: 18px 20px;
+    margin-top: 26px;
+    border: 1px solid var(--task-line);
+    border-radius: 12px;
+    background: var(--task-soft);
+}
+@media (max-width: 900px) {
+    .lab-tasks .task-list {
+        grid-template-columns: minmax(0, 1fr);
+    }
+    .lab-tasks .task-detail-layout {
+        flex-direction: column;
+        gap: 24px;
+    }
+    .lab-tasks .task-overview {
+        width: 100%;
+    }
+    .lab-tasks .task-submission {
+        flex-basis: auto;
+        width: 100%;
+    }}
+    @media (max-width: 600px) {
+        .lab-tasks .tasks-heading {
+            align-items: flex-start;
+            flex-direction: column;
+            gap: 18px;
+        }
+        .lab-tasks .tasks-toolbar {
+            align-items: stretch;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .lab-tasks .tasks-search {
+            width: 100%;
+        }
+        .lab-tasks .task-card,
+        .lab-tasks .task-editor,
+        .lab-tasks .task-submission {
+            padding: 20px;
+        }
+        .lab-tasks .form-input,
+        .lab-tasks .tasks-search .form-input {
+            font-size: 16px;
+        }
+        .lab-tasks .task-file-input {
+            font-size: 12px;
+        }}

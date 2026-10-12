@@ -1,0 +1,33 @@
+/* Tombol tema melayang */
+.floating-theme-control {
+    position: fixed;
+    right: calc(20px + env(safe-area-inset-right, 0px));
+    bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+    z-index: 60;
+}
+
+.floating-theme-control .theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    padding: 12px 18px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--card);
+    color: var(--text);
+    box-shadow: 0 6px 24px rgb(0 0 0 / 16%);
+    cursor: pointer;
+    transition:
+    background-color 180ms ease,
+    transform 180ms ease;
+}
+
+.floating-theme-control .theme-toggle:hover {
+    background: var(--hover);
+    transform: translateY(-2px);
+}
+
+.floating-theme-control .theme-toggle:active {
+    transform: translateY(0);
+}

@@ -1,0 +1,31 @@
+/* Dasar halaman */
+@layer base {
+    body {
+        @apply min-h-screen bg-surface font-sans text-ink antialiased;
+        background-image: radial-gradient(
+        ellipse at top left,
+        rgb(0 130 194 / 0.08),
+        transparent 65%
+        );
+    }
+    button,
+    a,
+    input,
+    select,
+    textarea {
+        @apply focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary;
+    }
+    button {
+        cursor: pointer;
+    }
+    button:disabled {
+        cursor: not-allowed;
+        opacity: 0.55;
+    }
+    select option {
+        background: var(--input);
+        color: var(--text);
+    }
+    [x-cloak] {
+        display: none !important;
+    }}

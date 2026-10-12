@@ -1,0 +1,145 @@
+/* Kompatibilitas tampilan auth lama; portal aktif memakai .lab-auth. */
+.auth-stage {
+    position: relative;
+    isolation: isolate;
+    background: #0086bb;
+    border-radius: 2rem;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+.auth-stage::before {
+    content: "";
+    position: absolute;
+    width: 440px;
+    height: 440px;
+    border: 1px solid rgb(255 255 255 / 0.16);
+    border-radius: 50%;
+    left: -160px;
+    bottom: -240px;
+    pointer-events: none;
+}
+.auth-message {
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 50%;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2.5rem;
+    color: #fff;
+    transition: transform 0.65s cubic-bezier(0.65, 0, 0.35, 1);
+}
+.auth-message-right {
+    transform: translateX(100%);
+}
+.auth-brand {
+    font-size: 1.65rem;
+    font-weight: 750;
+    letter-spacing: -0.05em;
+}
+.auth-brand span {
+    color: #ffd444;
+}
+.auth-kicker {
+    font-size: 0.7rem;
+    font-weight: 650;
+    letter-spacing: 0.16em;
+    opacity: 0.85;
+}
+.auth-message h1 {
+    margin-top: 1rem;
+    font-size: clamp(1.6rem, 3vw, 2.65rem);
+    line-height: 1.18;
+    font-weight: 750;
+    letter-spacing: -0.035em;
+}
+.auth-message h1 + p {
+    margin-top: 1.2rem;
+    line-height: 1.8;
+    font-size: 0.95rem;
+    max-width: 350px;
+}
+.auth-caption {
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+    opacity: 0.8;
+}
+.auth-floating-panel {
+    position: relative;
+    z-index: 1;
+    margin: 16px 0 16px 50%;
+    width: calc(50% - 16px);
+    min-height: 740px;
+    padding: 2.25rem;
+    border-radius: 1.5rem;
+    background: var(--auth-card);
+    box-shadow: 0 12px 40px rgb(0 35 70 / 0.18);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: transform 0.65s cubic-bezier(0.65, 0, 0.35, 1);
+}
+.auth-stage[data-mode="register"] .auth-floating-panel {
+    transform: translateX(calc(-100% + 0px));
+}
+.auth-form {
+    width: 100%;
+    max-width: 410px;
+    margin: auto;
+}
+.auth-form form {
+    margin-top: 1.4rem;
+}
+.auth-form form > * + * {
+    margin-top: 0.9rem;
+}
+.auth-form .form-input {
+    border-radius: 1rem;
+}
+.auth-form h2 {
+    font-size: 1.8rem;
+}
+.auth-form > p:last-child {
+    margin-top: 1.2rem;
+}
+@media (max-width: 767px) {
+    .auth-stage {
+        border-radius: 1.5rem;
+    }
+    .auth-message {
+        position: relative;
+        width: 100%;
+        padding: 1.5rem 1.5rem 1rem;
+        gap: 1.5rem;
+        transform: none;
+    }
+    .auth-message h1 {
+        font-size: 1.9rem;
+    }
+    .auth-message h1 + p {
+        margin-top: 0.6rem;
+        font-size: 0.85rem;
+    }
+    .auth-caption {
+        display: none;
+    }
+    .auth-floating-panel,
+    .auth-stage[data-mode="register"] .auth-floating-panel {
+        margin: 12px;
+        width: auto;
+        min-height: 0;
+        padding: 1.5rem;
+        transform: none;
+    }
+    .weather-card {
+        align-items: flex-start;
+    }}
+    @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+            scroll-behavior: auto !important;
+            animation-duration: 0.01ms !important;
+            transition-duration: 0.01ms !important;
+        }}

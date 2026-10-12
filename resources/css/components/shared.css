@@ -1,0 +1,32 @@
+/* Komponen bersama */
+@layer components {
+    .panel {
+        border: 1px solid var(--line);
+        border-radius: 1.5rem;
+        background: var(--card);
+        box-shadow: var(--shadow);
+    }
+    .form-label {
+        @apply mb-2 block text-sm font-medium text-ink;
+    }
+    .form-input {
+        @apply block w-full rounded-xl border border-line bg-field px-4 py-3 text-ink placeholder:text-muted focus:border-secondary;
+    }
+    .form-error {
+        @apply mt-2 text-sm text-danger;
+    }
+    .button-primary {
+        @apply inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-white transition hover:bg-primary/90 disabled:opacity-60;
+    }
+    .button-secondary {
+        @apply inline-flex items-center justify-center gap-2 rounded-xl border border-line bg-panel px-4 py-2.5 text-sm font-medium transition hover:bg-hover disabled:opacity-60;
+    }
+    .eyebrow {
+        @apply text-xs font-semibold tracking-widest text-secondary;
+    }
+    .notice-success {
+        @apply rounded-2xl border border-success/20 bg-success/10 p-4 text-success;
+    }
+    .auth-card {
+        @apply mx-auto w-full max-w-md rounded-3xl border border-line bg-panel p-6 sm:p-8;
+    }}

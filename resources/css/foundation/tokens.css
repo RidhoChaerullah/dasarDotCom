@@ -1,0 +1,53 @@
+/* Token desain dan tema */
+@theme {
+    --font-sans: "Segoe UI", Arial, sans-serif;
+    --color-primary: #006199;
+    --color-highlight: #ffd444;}
+    @theme inline {
+        --color-surface: var(--page);
+        --color-panel: var(--card);
+        --color-field: var(--input);
+        --color-hover: var(--hover);
+        --color-ink: var(--text);
+        --color-muted: var(--muted);
+        --color-line: var(--line);
+        --color-secondary: var(--link);
+        --color-accent: var(--accent);
+        --color-danger: var(--danger);
+        --color-success: var(--success);
+        --color-warning: var(--warning);}
+        :root,
+        [data-theme="dark"] {
+            color-scheme: dark;
+            --page: #071521;
+            --card: #102332;
+            --input: #0a1b29;
+            --hover: #1b3547;
+            --text: #edf5fc;
+            --muted: #afc0d0;
+            --line: #304655;
+            --link: #8acff8;
+            --accent: #f4eb6c;
+            --danger: #fca5a5;
+            --success: #6ee7b7;
+            --warning: #fcd34d;
+            --shadow: 0 18px 50px rgb(0 0 0 / 0.14);
+            --auth-card: #122939;
+        }
+        [data-theme="light"] {
+            color-scheme: light;
+            --page: #eef3f8;
+            --card: #ffffff;
+            --input: #f0f4f8;
+            --hover: #e5eef5;
+            --text: #152d40;
+            --muted: #506579;
+            --line: #d5e0e9;
+            --link: #006199;
+            --accent: #786000;
+            --danger: #b42332;
+            --success: #086a49;
+            --warning: #865100;
+            --shadow: 0 14px 40px rgb(30 65 95 / 0.06);
+            --auth-card: #ffffff;
+        }

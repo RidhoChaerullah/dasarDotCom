@@ -1,0 +1,206 @@
+/* Profil — identitas, informasi pribadi, dan keamanan */
+.lab-profile {
+    min-width: 0;
+    color: var(--text);
+}
+.lab-profile *,
+.lab-profile *::before,
+.lab-profile *::after {
+    box-sizing: border-box;
+}
+.lab-profile :is(button, input):focus-visible {
+    outline: 2px solid var(--link);
+    outline-offset: 4px;
+}
+.lab-profile .profile-heading {
+    padding: 6px 0 28px;
+}
+.lab-profile .profile-eyebrow {
+    color: var(--link);
+    font-size: 10px;
+    line-height: 1.7;
+    font-weight: 650;
+    letter-spacing: 0.14em;
+}
+.lab-profile .profile-title {
+    margin: 12px 0 10px;
+    font-size: clamp(28px, 3.4vw, 40px);
+    line-height: 1.18;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+}
+.lab-profile .profile-description {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.8;
+}
+.lab-profile .profile-account-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px 40px;
+    margin-top: 26px;
+    padding: 20px 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+}
+.lab-profile .profile-account-meta > div {
+    min-width: 130px;
+    max-width: 100%;
+}
+.lab-profile .profile-account-meta dt {
+    color: var(--muted);
+    font-size: 11px;
+}
+.lab-profile .profile-account-meta dd {
+    margin-top: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    overflow-wrap: anywhere;
+}
+.lab-profile .profile-account-note {
+    margin-top: 12px;
+    font-size: 11px;
+    line-height: 1.7;
+    color: var(--muted);
+}
+.lab-profile .profile-notice {
+    padding: 14px 16px;
+    margin-bottom: 24px;
+    border: 1px solid color-mix(in srgb, var(--success) 22%, transparent);
+    border-radius: 12px;
+    background: color-mix(in srgb, var(--success) 8%, transparent);
+    color: var(--success);
+    font-size: 13px;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+}
+.lab-profile .profile-forms {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    align-items: start;
+    gap: 24px;
+}
+.lab-profile .profile-form {
+    min-width: 0;
+    padding: 26px;
+    border: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
+    border-radius: 16px;
+    background: color-mix(in srgb, var(--card) 40%, transparent);
+}
+.lab-profile .profile-form > * + * {
+    margin-top: 22px;
+}
+.lab-profile .profile-form-heading {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding-bottom: 22px;
+    border-bottom: 1px solid var(--line);
+}
+.lab-profile .profile-step {
+    display: flex;
+    flex: 0 0 34px;
+    align-items: center;
+    justify-content: center;
+    height: 34px;
+    border-radius: 9px;
+    color: var(--link);
+    background: color-mix(in srgb, var(--link) 9%, transparent);
+    font-size: 11px;
+    font-weight: 650;
+}
+.lab-profile .profile-form-heading h2 {
+    font-size: 19px;
+    line-height: 1.4;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+}
+.lab-profile .profile-form-heading p {
+    margin-top: 6px;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.7;
+}
+.lab-profile .form-label {
+    margin-bottom: 8px;
+    font-size: 12px;
+    font-weight: 600;
+}
+.lab-profile .form-input {
+    width: 100%;
+    min-width: 0;
+    min-height: 44px;
+    padding: 11px 13px;
+    border-radius: 10px;
+    font-size: 14px;
+}
+.lab-profile .form-error {
+    margin-top: 8px;
+    font-size: 12px;
+}
+.lab-profile .profile-form p {
+    overflow-wrap: anywhere;
+}
+.lab-profile .profile-form .text-xs {
+    font-size: 11px;
+    line-height: 1.7;
+}
+.lab-profile .profile-security-note {
+    padding: 14px 16px;
+    border-radius: 10px;
+    background: color-mix(in srgb, var(--link) 6%, var(--page));
+    font-size: 12px;
+    line-height: 1.8;
+    color: var(--muted);
+}
+.lab-profile .profile-form-actions {
+    display: flex;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+}
+.lab-profile .button-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    padding: 10px 16px;
+    border: 1px solid #006199;
+    border-radius: 10px;
+    color: white;
+    background: #006199;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.4;
+    cursor: pointer;
+    transition:
+    background 160ms,
+    border-color 160ms;
+}
+.lab-profile .button-primary:hover {
+    background: #005481;
+    border-color: #005481;
+}
+.lab-profile button:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+@media (max-width: 800px) {
+    .lab-profile .profile-forms {
+        grid-template-columns: minmax(0, 1fr);
+    }}
+    @media (max-width: 600px) {
+        .lab-profile .profile-form {
+            padding: 20px;
+        }
+        .lab-profile .profile-account-meta {
+            gap: 20px 28px;
+        }
+        .lab-profile .profile-account-meta > div {
+            min-width: 100px;
+        }
+        .lab-profile .form-input {
+            font-size: 16px;
+        }
+        .lab-profile .profile-form-actions .button-primary {
+            width: 100%;
+        }}

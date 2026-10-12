@@ -1,0 +1,325 @@
+/* Jadwal — agenda mingguan dan editor */
+.lab-schedules {
+    width: 100%;
+    min-width: 0;
+    color: var(--text);
+}
+.lab-schedules *,
+.lab-schedules *::before,
+.lab-schedules *::after {
+    box-sizing: border-box;
+}
+.lab-schedules :is(a, button, input, select):focus-visible {
+    outline: 2px solid var(--link);
+    outline-offset: 4px;
+}
+.lab-schedules .schedule-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 6px 0 28px;
+}
+.lab-schedules .schedule-heading > div {
+    min-width: 0;
+}
+.lab-schedules .schedule-eyebrow {
+    font-size: 10px;
+    line-height: 1.7;
+    font-weight: 650;
+    letter-spacing: 0.14em;
+    color: var(--link);
+}
+.lab-schedules .schedule-title {
+    margin: 12px 0 10px;
+    font-size: clamp(28px, 3.4vw, 40px);
+    font-weight: 700;
+    line-height: 1.18;
+    letter-spacing: -0.04em;
+}
+.lab-schedules .schedule-description {
+    margin: 0;
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.8;
+}
+.lab-schedules .button-primary,
+.lab-schedules .schedule-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    padding: 10px 15px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.4;
+    cursor: pointer;
+    transition:
+    background 160ms,
+    border-color 160ms;
+}
+.lab-schedules .button-primary {
+    color: white;
+    background: #006199;
+    border-color: #006199;
+    flex-shrink: 0;
+}
+.lab-schedules .button-primary:hover {
+    background: #005481;
+    border-color: #005481;
+}
+.lab-schedules .schedule-button-quiet {
+    color: var(--muted);
+    background: transparent;
+    border-color: var(--line);
+}
+.lab-schedules .schedule-button-quiet:hover {
+    color: var(--link);
+    background: var(--hover);
+}
+.lab-schedules .schedule-button-danger {
+    color: var(--danger);
+    background: transparent;
+}
+.lab-schedules .schedule-button-danger:hover {
+    background: color-mix(in srgb, var(--danger) 8%, transparent);
+    border-color: color-mix(in srgb, var(--danger) 25%, transparent);
+}
+.lab-schedules button:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+.lab-schedules .schedule-notice,
+.lab-schedules .schedule-alert {
+    padding: 14px 16px;
+    margin-bottom: 22px;
+    border: 1px solid;
+    border-radius: 12px;
+    font-size: 13px;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+}
+.lab-schedules .schedule-notice {
+    color: var(--success);
+    border-color: color-mix(in srgb, var(--success) 22%, transparent);
+    background: color-mix(in srgb, var(--success) 8%, transparent);
+}
+.lab-schedules .schedule-alert {
+    color: var(--danger);
+    border-color: color-mix(in srgb, var(--danger) 22%, transparent);
+    background: color-mix(in srgb, var(--danger) 8%, transparent);
+}
+.lab-schedules .schedule-editor {
+    padding: 26px;
+    margin-bottom: 28px;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    background: var(--card);
+}
+.lab-schedules .schedule-editor > h2 {
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+}
+.lab-schedules .form-label {
+    margin-bottom: 8px;
+    font-size: 12px;
+    font-weight: 600;
+}
+.lab-schedules .form-input {
+    width: 100%;
+    min-width: 0;
+    min-height: 44px;
+    padding: 11px 13px;
+    border-radius: 10px;
+    font-size: 14px;
+    color-scheme: inherit;
+}
+.lab-schedules .form-error {
+    margin-top: 8px;
+    font-size: 12px;
+}
+.lab-schedules .schedule-toggle {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    border-radius: 12px;
+    background: color-mix(in srgb, var(--link) 6%, var(--page));
+    cursor: pointer;
+}
+.lab-schedules .schedule-toggle input {
+    flex-shrink: 0;
+}
+.lab-schedules .schedule-form-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+}
+.lab-schedules .schedule-list-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+}
+.lab-schedules .schedule-list-heading h2 {
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+}
+.lab-schedules .schedule-list-heading > span {
+    font-size: 11px;
+    color: var(--muted);
+}
+.lab-schedules .schedule-filters {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 220px;
+    gap: 16px;
+    padding: 20px 0 24px;
+}
+.lab-schedules .schedule-filters .form-input {
+    background: transparent;
+    font-size: 13px;
+}
+.lab-schedules .schedule-list {
+    display: grid;
+    gap: 12px;
+}
+.lab-schedules .schedule-row {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    min-width: 0;
+    padding: 22px 24px;
+    border: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
+    border-radius: 16px;
+    background: color-mix(in srgb, var(--card) 40%, transparent);
+}
+.lab-schedules .schedule-time {
+    flex: 0 0 156px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+}
+.lab-schedules .schedule-day {
+    color: var(--link);
+    font-size: 12px;
+    font-weight: 600;
+}
+.lab-schedules .schedule-time p {
+    font-size: 19px;
+    font-weight: 650;
+    letter-spacing: -0.035em;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+.lab-schedules .schedule-time p span {
+    color: var(--muted);
+    font-weight: 400;
+}
+.lab-schedules .schedule-timezone {
+    color: var(--muted);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+}
+.lab-schedules .schedule-inactive {
+    margin-top: 4px;
+    padding: 4px 8px;
+    border-radius: 6px;
+    background: var(--hover);
+    color: var(--muted);
+    font-size: 10px;
+    font-weight: 600;
+}
+.lab-schedules .schedule-info {
+    flex: 1;
+    min-width: 0;
+    padding-left: 24px;
+    border-left: 1px solid var(--line);
+    overflow-wrap: anywhere;
+}
+.lab-schedules .schedule-course {
+    font-size: 18px;
+    line-height: 1.4;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+}
+.lab-schedules .schedule-info > p {
+    margin-top: 6px;
+    font-size: 12px;
+    line-height: 1.7;
+    color: var(--muted);
+}
+.lab-schedules .schedule-info .schedule-instructor {
+    margin-top: 12px;
+}
+.lab-schedules .schedule-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    flex-shrink: 0;
+}
+.lab-schedules .schedule-actions .schedule-button {
+    min-height: 38px;
+    padding: 9px 12px;
+    font-size: 12px;
+}
+.lab-schedules .schedule-empty {
+    padding: 56px 24px;
+    border-radius: 16px;
+    text-align: center;
+    font-size: 14px;
+    color: var(--muted);
+    background: color-mix(in srgb, var(--link) 6%, var(--page));
+}
+@media (max-width: 800px) {
+    .lab-schedules .schedule-row {
+        flex-wrap: wrap;
+        gap: 18px;
+    }
+    .lab-schedules .schedule-time {
+        flex-basis: 140px;
+    }
+    .lab-schedules .schedule-actions {
+        width: 100%;
+        padding-top: 14px;
+        border-top: 1px solid var(--line);
+        justify-content: flex-end;
+    }}
+    @media (max-width: 600px) {
+        .lab-schedules .schedule-heading {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 18px;
+        }
+        .lab-schedules .schedule-filters {
+            grid-template-columns: minmax(0, 1fr);
+        }
+        .lab-schedules .schedule-row,
+        .lab-schedules .schedule-editor {
+            padding: 20px;
+        }
+        .lab-schedules .schedule-time {
+            flex-basis: 100%;
+        }
+        .lab-schedules .schedule-info {
+            flex-basis: 100%;
+            padding: 16px 0 0;
+            border-left: 0;
+            border-top: 1px solid var(--line);
+        }
+        .lab-schedules .schedule-list-heading {
+            align-items: flex-start;
+        }
+        .lab-schedules .form-input,
+        .lab-schedules .schedule-filters .form-input {
+            font-size: 16px;
+        }}
