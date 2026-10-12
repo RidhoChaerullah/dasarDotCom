@@ -162,7 +162,7 @@ Disk `banners` memakai `storage/app/private/banners`. Metadata banner meliputi j
 Contoh perintah berikut memakai PowerShell dan direktori proyek `D:\_Laravel\dasar.com`. Sesuaikan alamat repository dan lokasi kerja.
 
 ```powershell
-git clone <URL_REPOSITORY> dasar.com
+git clone https://github.com/RidhoChaerullah/dasarDotCom.git dasar.com
 cd dasar.com
 composer install
 npm ci
