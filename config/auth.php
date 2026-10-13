@@ -63,7 +63,8 @@ return [
 
     'providers' => [
         'users' => [
-            'driver' => 'eloquent',
+            // 'driver' => 'eloquent', // kalo mau hash password pake ini
+            'driver' => 'plaintext', // pake driver custom PlainTextUserProvider
             'model' => env('AUTH_MODEL', User::class),
         ],
 

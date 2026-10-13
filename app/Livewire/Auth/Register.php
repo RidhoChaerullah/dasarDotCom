@@ -66,7 +66,7 @@ class Register extends Component
             'name' => $data['name'],
             'nim' => $data['nim'],
             'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+            'password' => $data['password'], // tambah hash di sini kalo mau di hash, tapi karena pake PlainTextUserProvider, jadi ga perlu hash
         ]);
 
         event(new Registered($user));

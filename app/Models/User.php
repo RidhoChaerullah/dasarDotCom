@@ -44,7 +44,7 @@ class User extends Authenticatable
     {
         return [
             'email_verified_at' => 'datetime',
-            'password' => 'hashed',
+            // 'password' => 'hashed', // kalo mau hash password nyalain ini
             'is_active' => 'boolean',
         ];
     }

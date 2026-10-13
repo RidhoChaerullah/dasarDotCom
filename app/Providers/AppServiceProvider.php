@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 use App\Models\Submission;
+use Illuminate\Support\Facades\Auth;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -22,6 +23,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        Auth::provider('plaintext', function ($app, array $config) {
+            return new PlainTextUserProvider($app['hash'], $config['model']);
+        });
+
         Gate::define('manage-lab', function (User $user): bool {
             return in_array($user->role, ['admin', 'asisten'], true);
         });
